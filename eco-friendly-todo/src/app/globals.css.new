@@ -1,35 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  /* Main color scheme from Eco-Todo Logo */
-  --primary: #b3d093;       /* Exact green from logo (#b3d093) */
-  --primary-dark: #94b276;  /* Darker shade for hover states */
-  --secondary: #3A8E8E;     /* Teal from logo */
-  --accent: #D9E9C2;        /* Very light green accent */
-  --background: #9ab87a;    /* Darker green for page background */
-  --content-background: #b3d093; /* Light green for content boxes */
-  
-  /* Extended color palette */
-  --neutral-light: #F2F7EF;  /* Almost white with green tint */
-  --neutral: #e3ecd7;        /* Light green */
-  --neutral-dark: #d0dec0;   /* Slightly darker light green */
-  
-  /* Text colors */
-  --foreground: #000000;     /* Black text as requested */
-  --foreground-light: #333333; /* Lighter text color */
-  
-  /* Status colors */
+  --primary: #2E8B57;   /* Sea Green */
+  --primary-dark: #1F6541;
+  --secondary: #8FBC8F; /* Dark Sea Green */
+  --accent: #6B8E23;    /* Olive Drab */
+  --neutral-light: #F0F7F4;
+  --neutral: #E8F5E9;
+  --neutral-dark: #C8E6C9;
+  --foreground: #2C3E50;
+  --foreground-light: #546E7A;
+  --background: #FFFFFF;
   --error: #E57373;
   --success: #81C784;
   --warning: #FFD54F;
-  
-  /* Logo-specific colors */
-  --logo-teal: #3A8E8E;      /* Teal from triangle in logo */
-  --logo-green: #b3d093;     /* Exact background green from logo */
-  
-  /* Recycling report colors */
-  --leaf-green: #81C784;     /* Green for "Best Way to Recycle" section */
-  --water-blue: #64B5F6;     /* Blue for "Easy Way to Recycle" section */
+  --leaf-green: #66bb6a;
+  --water-blue: #4fc3f7;
+  --earth-brown: #8d6e63;
+  --recycle-blue: #039be5;
 }
 
 /* Custom theme properties */
