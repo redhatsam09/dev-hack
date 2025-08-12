@@ -1,8 +1,19 @@
-import { generativeModel } from "@/lib/gemini";
+import { generativeModel, isGeminiConfigured } from "@/lib/gemini";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
+    // Check if Gemini is properly configured
+    if (!isGeminiConfigured || !generativeModel) {
+      return NextResponse.json(
+        { 
+          error: "Gemini AI is not configured properly.",
+          instructions: "Please check your NEXT_PUBLIC_GEMINI_API_KEY in environment variables"
+        },
+        { status: 503 }
+      );
+    }
+
     const { video } = await req.json();
 
     if (!video) {
