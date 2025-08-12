@@ -2,17 +2,20 @@
 
 :root {
   /* Main color scheme from Eco-Todo Logo */
-  --primary: #b3d093;       /* Exact green from logo (#b3d093) */
-  --primary-dark: #94b276;  /* Darker shade for hover states */
+  --primary: #b5d091;       /* Exact green from logo (#b5d091) */
+  --primary-dark: #8aaa5b;  /* Darker shade for hover states */
+  --primary-darker: #6a8745; /* Even darker shade for depth */
   --secondary: #3A8E8E;     /* Teal from logo */
-  --accent: #D9E9C2;        /* Very light green accent */
-  --background: #9ab87a;    /* Darker green for page background */
-  --content-background: #b3d093; /* Light green for content boxes */
+  --secondary-dark: #2a6e6e; /* Darker teal for accents */
+  --accent: #d9e9c2;        /* Very light green accent */
+  --background: #b5d091;    /* Green for page background to match logo */
+  --content-background: #b5d091; /* Light green for content boxes */
   
   /* Extended color palette */
   --neutral-light: #F2F7EF;  /* Almost white with green tint */
   --neutral: #e3ecd7;        /* Light green */
-  --neutral-dark: #d0dec0;   /* Slightly darker light green */
+  --neutral-dark: #c5d7a9;   /* Slightly darker light green */
+  --deep-green: #4c7a34;     /* Deep forest green for accents */
   
   /* Text colors */
   --foreground: #000000;     /* Black text as requested */
@@ -78,6 +81,10 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.shadow-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 body {

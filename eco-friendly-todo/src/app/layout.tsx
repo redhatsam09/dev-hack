@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Bitter } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,8 +15,8 @@ const bitter = Bitter({
 });
 
 export const metadata: Metadata = {
-  title: "Eco-Recycle Challenge",
-  description: "Learn how to recycle items properly and earn points!",
+  title: "Eco-Todo App",
+  description: "Manage your tasks and learn how to recycle items properly with our AI assistant.",
 };
 
 export default function RootLayout({
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${bitter.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
