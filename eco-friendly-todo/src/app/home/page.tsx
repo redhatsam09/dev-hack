@@ -14,7 +14,7 @@ export default function HomePage() {
       
       <main className="container mx-auto px-4 py-20 relative z-10">
         {/* Hero Section */}
-        <div className="text-center mb-20 fade-in-up">
+        <div className="text-center mb-12 fade-in-up">
           <div className="mb-8 flex justify-center">
             <div className="relative">
               <img 
@@ -29,7 +29,7 @@ export default function HomePage() {
           <h1 className="text-7xl font-bold mb-6 text-nature-gradient leading-tight">
             Eco-Todo
             <span className="block text-5xl font-light text-text-secondary mt-2">
-              Sustainable Living, Simplified
+              Transforming Sustainability with to-do lists
             </span>
           </h1>
           
@@ -46,47 +46,26 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link href="/about" className="text-eucalyptus font-semibold hover:text-forest-green transition-colors flex items-center">
-              Learn More
-              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </Link>
           </div>
         </div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           <div className="nature-card p-8 text-center grow-in" style={{animationDelay: '0.1s'}}>
-            <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-sage-green to-forest-green rounded-full flex items-center justify-center icon-container">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-bold text-forest-green mb-4">Smart AI Guidance</h3>
+            <h3 className="text-2xl font-bold text-forest-green mb-4">AI Quizzing</h3>
             <p className="text-dark leading-relaxed">
-              Get personalized recycling tips powered by advanced AI. Learn the best practices for every item in your household.
+              Take personalized quizzes about your products powered by AI. Get immediate feedback on recycling practices for your household items.
             </p>
           </div>
 
           <div className="nature-card p-8 text-center grow-in" style={{animationDelay: '0.2s'}}>
-            <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-eucalyptus to-pine rounded-full flex items-center justify-center icon-container">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
             <h3 className="text-2xl font-bold text-forest-green mb-4">Impact Tracking</h3>
             <p className="text-dark leading-relaxed">
-              Visualize your environmental impact with beautiful charts and see how your actions contribute to a healthier planet.
+              Visualize your environmental impact with competitive leaderboards and see how your contributions make a difference across the community.
             </p>
           </div>
 
           <div className="nature-card p-8 text-center grow-in" style={{animationDelay: '0.3s'}}>
-            <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-moss-green to-olive rounded-full flex items-center justify-center icon-container">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
             <h3 className="text-2xl font-bold text-forest-green mb-4">Eco Community</h3>
                         <p className="text-dark leading-relaxed">
               Join our growing community of eco-warriors. Share tips, compete in challenges, and inspire others on their sustainability journey.

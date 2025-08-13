@@ -4,6 +4,7 @@ import Image from 'next/image';
 import VideoRecorder from "@/components/VideoRecorder";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import PointsDisplay from "@/components/PointsDisplay";
+import Header from "@/components/Header";
 import { usePoints } from "@/contexts/PointsContext";
 import { useEffect, useState } from 'react';
 
@@ -25,23 +26,7 @@ export default function Home() {
         <div className="absolute top-40 right-20 w-24 h-24 organic-shape bg-gradient-to-br from-forest-green/15 to-mint-cream/30 floating-delayed"></div>
         <div className="absolute bottom-32 left-1/4 w-40 h-40 organic-shape bg-gradient-to-br from-seafoam/25 to-sage-green/15 floating"></div>
         
-        {/* Top header bar */}
-        <div className="fixed top-0 left-0 w-full glass-card-strong h-16 gentle-glow z-20 border-b border-sage-green/20">
-          <div className="container mx-auto px-4 h-full flex items-center justify-between">
-            <div className="flex items-center">
-              <img src="/new_logo.png" alt="Eco-Todo Logo" className="w-12 h-12 mr-3 leaf-sway" />
-              <span className="text-nature-gradient font-bold text-xl">Eco-Todo</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <PointsDisplay size="sm" showSession={true} />
-              <a href="/profile" className="text-sage-green hover:text-eucalyptus transition-all duration-300 hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
+        <Header />
         
         {/* Main Content */}
         <main className="flex flex-col items-center justify-center w-full pt-24 px-4 sm:px-6 relative z-10">

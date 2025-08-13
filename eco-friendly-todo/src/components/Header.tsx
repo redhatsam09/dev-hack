@@ -20,7 +20,7 @@ export default function Header() {
         await signOut(auth);
       }
       setMenuOpen(false);
-      router.push('/home');
+      router.push('/');
     } catch (error) {
       console.error('Error signing out: ', error);
     }
@@ -28,26 +28,20 @@ export default function Header() {
 
   return (
     <header className="glass-card-strong border-b border-white/30 sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="flex items-center">
+      <div className="container mx-auto px-4 py-4 flex items-center">
+        {/* Logo section - fixed width */}
+        <div className="flex items-center w-64">
           <div className="relative">
             <img src="/new_logo.png" alt="Eco-Todo Logo" className="h-12 w-12 mr-3 leaf-sway" />
             <div className="absolute -inset-1 bg-gradient-to-r from-sage-green/30 to-eucalyptus/30 rounded-full blur-sm -z-10"></div>
           </div>
-          <Link href="/home" className="text-2xl font-bold text-nature-gradient hover:scale-105 transition-transform">
+          <Link href="/" className="text-2xl font-bold text-nature-gradient hover:scale-105 transition-transform">
             Eco-Todo
           </Link>
         </div>
         
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/home" className="text-text-secondary hover:text-forest-green transition-colors font-medium relative group">
-            Home
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sage-green transition-all group-hover:w-full"></span>
-          </Link>
-          <Link href="/about" className="text-text-secondary hover:text-forest-green transition-colors font-medium relative group">
-            About
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-sage-green transition-all group-hover:w-full"></span>
-          </Link>
+        {/* Centered Navigation */}
+        <nav className="hidden md:flex items-center justify-center space-x-8 flex-1">
           {user && (
             <>
               <Link href="/web-app" className="text-text-secondary hover:text-forest-green transition-colors font-medium relative group">
@@ -65,7 +59,8 @@ export default function Header() {
           )}
         </nav>
         
-        <div className="relative">
+        {/* Account section - fixed width */}
+        <div className="relative w-64 flex justify-end">
           {loading ? (
             <div className="bg-white/30 w-28 h-10 rounded-lg animate-pulse"></div>
           ) : user ? (
