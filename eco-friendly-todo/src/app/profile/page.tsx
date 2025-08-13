@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePoints } from '@/contexts/PointsContext';
-import { auth } from '@/lib/firebase';
+import { auth, database } from '@/lib/firebase';
 import { updateProfile, updatePassword } from 'firebase/auth';
+import { ref, update } from 'firebase/database';
 import Header from '@/components/Header';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import PointsDisplay from '@/components/PointsDisplay';
@@ -29,7 +30,18 @@ export default function ProfilePage() {
     setMessage('');
 
     try {
+      // Update Firebase Auth profile
       await updateProfile(user, { displayName });
+      
+      // Also update Firebase Realtime Database
+      if (database) {
+        const userRef = ref(database, `users/${user.uid}`);
+        await update(userRef, {
+          displayName: displayName,
+          email: user.email,
+        });
+      }
+      
       setMessage('Profile updated successfully!');
     } catch (err: any) {
       setError(err.message);

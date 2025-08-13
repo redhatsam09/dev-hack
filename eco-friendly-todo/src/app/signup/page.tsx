@@ -1,10 +1,10 @@
-
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { auth } from '@/lib/firebase';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getDatabase, ref as dbRef, set } from 'firebase/database';
 import { useRouter } from 'next/navigation';
 
 export default function SignUpPage() {
@@ -30,6 +30,15 @@ export default function SignUpPage() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
+
+      // Also save user info to Realtime Database
+      const db = getDatabase();
+      await set(dbRef(db, `users/${userCredential.user.uid}`), {
+        email: userCredential.user.email,
+        displayName: name,
+        points: 0,
+      });
+
       router.push('/web-app');
     } catch (err: any) {
       setError(err.message);

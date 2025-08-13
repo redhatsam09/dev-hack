@@ -65,6 +65,7 @@ export function PointsProvider({ children }: { children: React.ReactNode }) {
           // Create initial user document
           const initialData = {
             email: user.email,
+            displayName: user.displayName || user.email?.split('@')[0] || 'User',
             totalPoints: 0,
             pointsHistory: {},
             createdAt: Date.now(),
@@ -122,6 +123,8 @@ export function PointsProvider({ children }: { children: React.ReactNode }) {
       // Use Firebase batch operations
       const updates: { [key: string]: any } = {};
       updates[`users/${user.uid}/totalPoints`] = newTotalPoints;
+      updates[`users/${user.uid}/displayName`] = user.displayName || user.email?.split('@')[0] || 'User';
+      updates[`users/${user.uid}/email`] = user.email;
       updates[`users/${user.uid}/lastUpdated`] = Date.now();
       updates[`users/${user.uid}/pointsHistory/${newHistoryRef.key}`] = {
         points,
