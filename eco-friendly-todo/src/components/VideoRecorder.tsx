@@ -137,7 +137,7 @@ export default function VideoRecorder({}: VideoRecorderProps) {
     <div className="flex flex-col items-center w-full">
       {/* Session Points Display */}
       {sessionPoints > 0 && (
-        <div className="mb-6 p-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-xl shadow-lg animate-bounce-in">
+        <div className="mb-6 p-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-xl gentle-glow animate-bounce-in">
           <div className="flex items-center justify-center gap-2">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -152,7 +152,7 @@ export default function VideoRecorder({}: VideoRecorderProps) {
 
       {!analysis && (
         <>
-          <div className="w-full rounded-lg overflow-hidden shadow-lg mb-6 relative">
+          <div className="w-full rounded-lg overflow-hidden gentle-glow mb-6 relative">
             {/* Triangle accents inspired by the logo */}
             <div className="absolute top-0 left-0 w-12 h-12 z-10 pointer-events-none opacity-70" 
                  style={{ color: 'var(--logo-teal)' }}>
@@ -222,7 +222,7 @@ export default function VideoRecorder({}: VideoRecorderProps) {
           
           <button
             onClick={handleRecording}
-            className="px-8 py-3 font-medium text-white rounded-md disabled:opacity-50 transition-all duration-300 ease-in-out hover:shadow-lg flex items-center justify-center"
+            className="px-8 py-3 font-medium text-white rounded-md disabled:opacity-50 transition-all duration-300 ease-in-out gentle-glow flex items-center justify-center"
             style={{ 
               background: isRecording 
                 ? 'var(--error)' 
@@ -264,7 +264,7 @@ export default function VideoRecorder({}: VideoRecorderProps) {
       )}
 
       {analysis && !showReport && (
-        <div className="mt-6 p-8 rounded-3xl shadow-lg text-left w-full max-w-md animate-fade-in" 
+        <div className="mt-6 p-8 rounded-3xl gentle-glow text-left w-full max-w-md animate-fade-in" 
              style={{ backgroundColor: 'var(--neutral)', borderLeft: '4px solid var(--primary)' }}>
           <div className="flex items-start mb-4">
             <div className="p-3 rounded-full eco-gradient mr-4 flex-shrink-0">
@@ -305,7 +305,7 @@ export default function VideoRecorder({}: VideoRecorderProps) {
       )}
 
       {showReport && analysis && (
-        <div className="mt-6 p-8 rounded-3xl shadow-lg text-left w-full max-w-md animate-fade-in"
+        <div className="mt-6 p-8 rounded-3xl gentle-glow text-left w-full max-w-md animate-fade-in"
              style={{ backgroundColor: 'var(--primary)' }}>
           <div className="flex justify-between items-start">
             <h3 className="text-2xl font-bold mb-4" style={{ color: 'var(--foreground)' }}>Recycling Report</h3>
@@ -402,7 +402,7 @@ export default function VideoRecorder({}: VideoRecorderProps) {
           <div className="flex items-center">
             <button
               onClick={() => setAnalysis(null)}
-              className="flex-1 px-6 py-4 font-bold text-white rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 shadow-lg flex items-center justify-center"
+              className="flex-1 px-6 py-4 font-bold text-white rounded-full transition-all duration-300 ease-in-out transform hover:scale-105 gentle-glow flex items-center justify-center"
               style={{ backgroundColor: 'var(--secondary)' }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

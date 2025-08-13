@@ -1,38 +1,263 @@
 @import "tailwindcss";
 
 :root {
-  /* Main color scheme from Eco-Todo Logo */
-  --primary: #b4d093;       /* Exact green from logo (#b4d093) */
-  --primary-dark: #89aa5a;  /* Darker shade for hover states */
-  --primary-darker: #698744; /* Even darker shade for depth */
-  --secondary: #3A8E8E;     /* Teal from logo */
-  --secondary-dark: #2a6e6e; /* Darker teal for accents */
-  --accent: #d8e9c1;        /* Very light green accent */
-  --background: #b4d093;    /* Green for page background to match logo */
-  --content-background: #b4d093; /* Light green for content boxes */
+  /* Sophisticated Eco-Friendly Color Palette */
+  --sage-green: #9CAF88;
+  --forest-green: #6B8E6B;
+  --moss-green: #8FBC8F;
+  --eucalyptus: #52796F;
+  --mint-cream: #F0FFF0;
+  --seafoam: #96C7A4;
+  --pine: #2D5A3D;
+  --olive: #6B7C32;
+  --cream: #FFFDD0;
+  --pearl: #F8F8FF;
+  --soft-gray: #F5F5F5;
   
-  /* Extended color palette */
-  --neutral-light: #F2F7EF;  /* Almost white with green tint */
-  --neutral: #e3ecd7;        /* Light green */
-  --neutral-dark: #c5d7a9;   /* Slightly darker light green */
-  --deep-green: #4c7a34;     /* Deep forest green for accents */
+  /* Primary brand colors */
+  --primary: var(--sage-green);
+  --primary-dark: var(--forest-green);
+  --primary-light: var(--seafoam);
+  --accent: var(--eucalyptus);
+  --accent-light: var(--mint-cream);
   
-  /* Text colors */
-  --foreground: #000000;     /* Black text as requested */
-  --foreground-light: #333333; /* Lighter text color */
+  /* Background gradients */
+  --bg-gradient-primary: linear-gradient(135deg, var(--mint-cream) 0%, var(--seafoam) 50%, var(--sage-green) 100%);
+  --bg-gradient-secondary: linear-gradient(45deg, var(--cream) 0%, var(--pearl) 100%);
+  --bg-gradient-accent: linear-gradient(90deg, var(--eucalyptus) 0%, var(--pine) 100%);
   
-  /* Status colors */
-  --error: #E57373;
-  --success: #81C784;
-  --warning: #FFD54F;
+  /* Text colors - improved contrast */
+  --text-primary: #1A2B1A;
+  --text-secondary: #2D3E2D;
+  --text-light: #4A5B4A;
+  --text-white: #FFFFFF;
   
-  /* Logo-specific colors */
-  --logo-teal: #3A8E8E;      /* Teal from triangle in logo */
-  --logo-green: #b4d093;     /* Exact background green from logo */
+  /* Quiz feedback colors */
+  --quiz-correct: #27AE60;
+  --quiz-correct-light: #2ECC71;
+  --quiz-correct-bg: #D5F4E6;
+  --quiz-wrong: #E74C3C;
+  --quiz-wrong-light: #EC7063;
+  --quiz-wrong-bg: #FADBD8;
   
-  /* Recycling report colors */
-  --leaf-green: #81C784;     /* Green for "Best Way to Recycle" section */
-  --water-blue: #64B5F6;     /* Blue for "Easy Way to Recycle" section */
+  /* Shadows and effects */
+  --shadow-soft: 0 4px 20px rgba(108, 142, 107, 0.15);
+  --shadow-medium: 0 8px 32px rgba(108, 142, 107, 0.2);
+  --shadow-strong: 0 12px 48px rgba(108, 142, 107, 0.25);
+  --glow-green: 0 0 20px rgba(156, 175, 136, 0.4);
+}
+
+/* Artistic background patterns */
+.organic-bg {
+  background: var(--bg-gradient-primary);
+  position: relative;
+}
+
+.organic-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(156, 175, 136, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(107, 142, 107, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(82, 121, 111, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239CAF88' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20S-10 18.954-10 30s8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Glass morphism effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Floating elements */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-delayed {
+  animation: float 6s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Organic shapes */
+.organic-shape {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+  50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+  75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+}
+
+/* Nature-inspired animations */
+.leaf-sway {
+  animation: leaf-sway 4s ease-in-out infinite;
+}
+
+@keyframes leaf-sway {
+  0%, 100% { transform: rotate(-3deg) translateX(0); }
+  25% { transform: rotate(2deg) translateX(2px); }
+  50% { transform: rotate(-1deg) translateX(-1px); }
+  75% { transform: rotate(3deg) translateX(1px); }
+}
+
+.grow-in {
+  animation: grow-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes grow-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Button styles */
+.btn-nature {
+  background: linear-gradient(45deg, var(--sage-green), var(--forest-green));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-nature::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-nature:hover::before {
+  left: 100%;
+}
+
+.btn-nature:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Card enhancements */
+.nature-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(156, 175, 136, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--sage-green), var(--eucalyptus), var(--forest-green));
+}
+
+.nature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Text gradients */
+.text-nature-gradient {
+  background: linear-gradient(45deg, var(--forest-green), var(--sage-green), var(--eucalyptus));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced animations */
+.fade-in-up {
+  opacity: 1;
+  animation: fade-in-up 0.6s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Quiz feedback styles */
+.quiz-correct {
+  background: var(--quiz-correct-bg);
+  border: 2px solid var(--quiz-correct);
+  color: var(--quiz-correct);
+  animation: quiz-correct-pulse 0.6s ease-out;
+}
+
+.quiz-wrong {
+  background: var(--quiz-wrong-bg);
+  border: 2px solid var(--quiz-wrong);
+  color: var(--quiz-wrong);
+  animation: quiz-wrong-shake 0.6s ease-out;
+}
+
+@keyframes quiz-correct-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px var(--quiz-correct); }
+  100% { transform: scale(1); }
+}
+
+@keyframes quiz-wrong-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Body styling */
+body {
+  background: var(--bg-gradient-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
 }
 
 /* Custom theme properties */
@@ -69,10 +294,6 @@
 
 .animate-points-earned {
   animation: points-earned 1.5s ease-out forwards;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .animate-slide-up {
@@ -139,15 +360,6 @@
   }
 }
 
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
-  }
-  50% {
-    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
-  }
-}
-
 @keyframes slide-up {
   from {
     opacity: 0;
@@ -199,4 +411,61 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232E8B57' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Better text color utilities for improved contrast */
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+.text-light {
+  color: var(--text-light) !important;
+}
+
+/* Dark text for light backgrounds */
+.text-dark {
+  color: #1A2B1A !important;
+}
+
+.text-dark-secondary {
+  color: #2D3E2D !important;
+}
+
+/* Enhanced contrast for cards */
+.glass-card .text-light {
+  color: #2D3E2D !important;
+}
+
+.nature-card .text-light {
+  color: #2D3E2D !important;
+}
+
+/* Better readability on gradient backgrounds */
+.text-on-gradient {
+  color: #1A2B1A !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Subtle hover glow effect to replace pulse */
+.gentle-glow {
+  transition: all 0.3s ease;
+}
+
+.gentle-glow:hover {
+  box-shadow: 0 0 20px rgba(156, 175, 136, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Icon containers with gentle hover effect */
+.icon-container {
+  transition: all 0.3s ease;
+}
+
+.icon-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(156, 175, 136, 0.2);
 }

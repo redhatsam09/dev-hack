@@ -48,23 +48,36 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-light flex items-center justify-center py-8">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <div className="flex justify-center mb-6">
-          <img src="/logo.png" alt="Eco-Friendly Todo" className="h-16 w-16" />
+    <div className="min-h-screen organic-bg leaf-pattern flex items-center justify-center py-8 relative overflow-hidden">
+      {/* Floating organic shapes */}
+      <div className="absolute top-20 right-10 w-32 h-32 organic-shape bg-gradient-to-br from-sage-green/20 to-eucalyptus/20 floating"></div>
+      <div className="absolute bottom-20 left-20 w-24 h-24 organic-shape bg-gradient-to-br from-forest-green/15 to-mint-cream/30 floating-delayed"></div>
+      
+      <div className="nature-card p-10 w-full max-w-lg grow-in shadow-medium">
+        <div className="flex justify-center mb-8">
+          <div className="relative">
+            <img src="/new_logo.png" alt="Eco-Todo" className="h-20 w-20 leaf-sway" />
+            <div className="absolute -inset-2 bg-gradient-to-r from-sage-green/30 to-eucalyptus/30 rounded-full blur-xl -z-10"></div>
+          </div>
         </div>
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">Join Eco-Todo</h1>
-        <p className="text-center text-gray-600 mb-6">Create an account to track your tasks and help the environment</p>
+        
+        <h1 className="text-4xl font-bold text-center text-nature-gradient mb-3">Join Eco-Todo</h1>
+        <p className="text-center text-text-light mb-8 text-lg">Start your sustainable journey today</p>
         
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-            <span className="block sm:inline">{error}</span>
+          <div className="bg-red-50 border-l-4 border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+              <span>{error}</span>
+            </div>
           </div>
         )}
         
-        <form onSubmit={handleSignUp}>
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2 font-medium" htmlFor="name">
+        <form onSubmit={handleSignUp} className="space-y-6">
+          <div>
+            <label className="block text-text-primary mb-3 font-semibold text-lg" htmlFor="name">
               Full Name
             </label>
             <input
@@ -72,14 +85,14 @@ export default function SignUpPage() {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 border-2 border-sage-green/30 rounded-xl focus:outline-none focus:border-eucalyptus focus:ring-4 focus:ring-eucalyptus/20 transition-all bg-white/80"
               required
               placeholder="Enter your full name"
             />
           </div>
           
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2 font-medium" htmlFor="email">
+          <div>
+            <label className="block text-text-primary mb-3 font-semibold text-lg" htmlFor="email">
               Email Address
             </label>
             <input
@@ -87,14 +100,14 @@ export default function SignUpPage() {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 border-2 border-sage-green/30 rounded-xl focus:outline-none focus:border-eucalyptus focus:ring-4 focus:ring-eucalyptus/20 transition-all bg-white/80"
               required
-              placeholder="Enter your email"
+              placeholder="Enter your email address"
             />
           </div>
           
-          <div className="mb-4">
-            <label className="block text-gray-700 mb-2 font-medium" htmlFor="password">
+          <div>
+            <label className="block text-text-primary mb-3 font-semibold text-lg" htmlFor="password">
               Password
             </label>
             <input
@@ -103,14 +116,14 @@ export default function SignUpPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="At least 6 characters"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 border-2 border-sage-green/30 rounded-xl focus:outline-none focus:border-eucalyptus focus:ring-4 focus:ring-eucalyptus/20 transition-all bg-white/80"
               required
               minLength={6}
             />
           </div>
           
-          <div className="mb-6">
-            <label className="block text-gray-700 mb-2 font-medium" htmlFor="confirmPassword">
+          <div>
+            <label className="block text-text-primary mb-3 font-semibold text-lg" htmlFor="confirmPassword">
               Confirm Password
             </label>
             <input
@@ -118,28 +131,39 @@ export default function SignUpPage() {
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full px-4 py-3 border-2 border-sage-green/30 rounded-xl focus:outline-none focus:border-eucalyptus focus:ring-4 focus:ring-eucalyptus/20 transition-all bg-white/80"
               required
               placeholder="Confirm your password"
             />
           </div>
           
-          <div className="mb-2">
+          <div className="pt-4">
             <button
               type="submit"
               disabled={loading}
-              style={{ backgroundColor: '#b4d093' }}
-              className="w-full text-white font-bold py-3 px-4 rounded-lg transition-colors text-lg shadow-md hover:bg-opacity-90"
+              className="btn-nature w-full text-lg py-4 font-bold relative overflow-hidden group"
             >
-              {loading ? 'Creating Account...' : 'Create Account'}
+              <span className="relative z-10">
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Creating Account...
+                  </div>
+                ) : (
+                  'Create Account'
+                )}
+              </span>
             </button>
           </div>
         </form>
         
-        <div className="mt-6 pt-4 border-t border-gray-200">
-          <p className="text-center text-gray-600">
+        <div className="mt-8 pt-6 border-t border-sage-green/20">
+          <p className="text-center text-text-light text-lg">
             Already have an account?{' '}
-            <Link href="/login" style={{ color: '#b4d093' }} className="font-medium hover:underline">
+            <Link href="/login" className="text-eucalyptus font-semibold hover:text-forest-green transition-colors">
               Log In
             </Link>
           </p>

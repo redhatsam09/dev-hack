@@ -109,16 +109,18 @@ export default function Leaderboard() {
   if (isLoading) {
     return (
       <div className="w-full max-w-4xl mx-auto p-6">
-        <div className="bg-white rounded-xl shadow-lg p-8 animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/3 mb-6"></div>
+        <div className="nature-card p-10 grow-in">
+          <div className="h-8 bg-sage-green/30 rounded-xl w-1/3 mb-8"></div>
           {[...Array(5)].map((_, i) => (
-            <div key={i} className="flex items-center p-4 mb-4 bg-gray-100 rounded-lg">
-              <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-              <div className="flex-1">
-                <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
-                <div className="h-3 bg-gray-300 rounded w-1/4"></div>
+            <div key={i} className="glass-card p-6 mb-6 rounded-xl fade-in-up" style={{animationDelay: `${i * 0.1}s`}}>
+              <div className="animate-pulse flex items-center">
+                <div className="w-16 h-16 bg-sage-green/30 rounded-full mr-6"></div>
+                <div className="flex-1">
+                  <div className="h-4 bg-sage-green/30 rounded-xl w-1/2 mb-3"></div>
+                  <div className="h-3 bg-sage-green/20 rounded-xl w-1/4"></div>
+                </div>
+                <div className="h-6 bg-sage-green/30 rounded-xl w-20"></div>
               </div>
-              <div className="h-6 bg-gray-300 rounded w-20"></div>
             </div>
           ))}
         </div>
@@ -129,13 +131,15 @@ export default function Leaderboard() {
   if (error) {
     return (
       <div className="w-full max-w-4xl mx-auto p-6">
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <div className="text-center py-12">
-            <svg className="w-16 h-16 text-red-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
-            </svg>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Unable to load leaderboard</h3>
-            <p className="text-gray-500">{error}</p>
+        <div className="nature-card p-10">
+          <div className="text-center py-16">
+            <div className="w-20 h-20 bg-gradient-to-br from-quiz-wrong/20 to-quiz-wrong/30 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-quiz-wrong" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-forest-green mb-4">Unable to load leaderboard</h3>
+            <p className="text-dark text-lg">{error}</p>
           </div>
         </div>
       </div>
@@ -143,102 +147,88 @@ export default function Leaderboard() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 animate-fade-in">
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto p-6 grow-in">
+      <div className="nature-card overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#b4d093] to-[#89aa5a] p-8 text-white">
-          <div className="flex items-center justify-center mb-4">
-            <svg className="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <h2 className="text-3xl font-bold">🏆 Eco Champions</h2>
-          </div>
-          <p className="text-center text-white/90">
-            Top recycling enthusiasts making a difference for our planet
-          </p>
-          {leaderboard.length > 0 && (
-            <div className="mt-4 text-center">
-              <span className="bg-white/20 px-3 py-1 rounded-full text-sm">
+          <div className="text-center glass-card p-8">
+            <h2 className="text-4xl font-bold text-nature-gradient mb-4">🏆 Eco Champions</h2>
+            <p className="text-xl text-dark mb-6">
+              Top recycling enthusiasts making a difference for our planet
+            </p>
+            {leaderboard.length > 0 && (
+              <p className="text-lg text-forest-green font-semibold">
                 {leaderboard.length} eco warriors competing
-              </span>
-            </div>
-          )}
-        </div>
+              </p>
+            )}
+          </div>
 
         {/* Leaderboard Content */}
-        <div className="p-8">
+        <div className="p-10">
           {leaderboard.length === 0 ? (
-            <div className="text-center py-12">
-              <svg className="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-              <h3 className="text-lg font-medium text-gray-900 mb-2">No champions yet!</h3>
-              <p className="text-gray-500">Be the first to earn points and claim the top spot!</p>
+            <div className="text-center py-16">
+              <div className="w-20 h-20 bg-gradient-to-br from-sage-green/20 to-eucalyptus/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-sage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-forest-green mb-4">No champions yet!</h3>
+              <p className="text-dark text-lg">Be the first to earn points and claim the top spot!</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {leaderboard.map((entry, index) => (
                 <div
                   key={entry.uid}
                   className={`
-                    flex items-center p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105
+                    glass-card p-8 rounded-2xl transition-all duration-300 hover:scale-105 fade-in-up
                     ${entry.uid === user?.uid 
-                      ? 'bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 animate-pulse-glow' 
-                      : 'bg-gradient-to-r from-gray-50 to-gray-100 hover:from-green-50 hover:to-emerald-50'
+                      ? 'border-2 border-sage-green bg-gradient-to-r from-sage-green/10 to-eucalyptus/10' 
+                      : 'hover:border-sage-green/30 gentle-glow'
                     }
-                    ${index === 0 ? 'animate-celebration' : ''}
+                    ${index === 0 ? 'ring-2 ring-sage-green/30' : ''}
                   `}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  {/* Rank */}
-                  <div className={`
-                    flex items-center justify-center w-16 h-16 rounded-full font-bold text-white mr-6 shadow-lg
-                    bg-gradient-to-r ${getRankColor(index + 1)}
-                  `}>
-                    <span className="text-lg">
-                      {getRankIcon(index + 1)}
-                    </span>
-                  </div>
-
-                  {/* User Info */}
-                  <div className="flex-1">
-                    <div className="flex items-center mb-1">
-                      <h3 className="text-lg font-semibold text-gray-800">
-                        {getDisplayName(entry)}
-                      </h3>
-                      {entry.uid === user?.uid && (
-                        <span className="ml-2 px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full">
-                          You
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-gray-500 flex items-center">
-                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                      {entry.email}
-                    </p>
-                  </div>
-
-                  {/* Points */}
-                  <div className="text-right">
-                    <div className="flex items-center justify-end mb-1">
-                      <svg className="w-5 h-5 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      <span className="text-2xl font-bold text-gray-800 animate-count-up">
-                        {entry.totalPoints.toLocaleString()}
+                  <div className="flex items-center">
+                    {/* Rank */}
+                    <div className={`
+                      flex items-center justify-center w-20 h-20 rounded-full font-bold text-white mr-8 icon-container
+                      bg-gradient-to-r ${getRankColor(index + 1)}
+                    `}>
+                      <span className="text-2xl">
+                        {getRankIcon(index + 1)}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-500">points</p>
-                  </div>
 
-                  {/* Special Effects for Top 3 */}
-                  {index < 3 && (
-                    <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none">
-                      <div className="w-full h-full animate-ping opacity-20 bg-yellow-400 rounded-full"></div>
+                    {/* User Info */}
+                    <div className="flex-1">
+                      <div className="flex items-center mb-2">
+                        <h3 className="text-2xl font-bold text-forest-green">
+                          {getDisplayName(entry)}
+                        </h3>
+                        {entry.uid === user?.uid && (
+                          <span className="ml-4 px-4 py-2 bg-sage-green/20 text-sage-green text-sm font-bold rounded-full border border-sage-green/30">
+                            You
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  )}
+
+                    {/* Points */}
+                    <div className="text-right">
+                      <div className="flex items-center justify-end mb-2">
+                        <div className="w-8 h-8 bg-gradient-to-r from-sage-green to-eucalyptus rounded-full flex items-center justify-center mr-3">
+                          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        </div>
+                        <span className="text-3xl font-bold text-sage-green">
+                          {entry.totalPoints.toLocaleString()}
+                        </span>
+                      </div>
+                      <p className="text-text-secondary font-medium">points</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -246,8 +236,8 @@ export default function Leaderboard() {
         </div>
 
         {/* Footer */}
-        <div className="bg-gray-50 px-8 py-4 border-t border-gray-200">
-          <p className="text-center text-sm text-gray-600">
+        <div className="glass-card-strong p-6 border-t border-sage-green/20">
+          <p className="text-center text-dark text-lg font-medium">
             🌱 Keep recycling to climb the leaderboard and help save our planet!
           </p>
         </div>

@@ -35,7 +35,7 @@ export default function PointsDisplay({
       {/* Total Points */}
       <div className={`
         bg-gradient-to-r from-green-400 to-emerald-500 text-white font-bold rounded-lg
-        shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105
+        gentle-glow transition-all duration-300 hover:scale-105
         flex items-center gap-2 ${sizeClasses[size]}
       `}>
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -49,7 +49,7 @@ export default function PointsDisplay({
       {showSession && sessionPoints > 0 && (
         <div className={`
           bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold rounded-lg
-          shadow-lg transition-all duration-300 hover:shadow-xl
+          gentle-glow transition-all duration-300
           flex items-center gap-1 animate-bounce-in ${sizeClasses[size]}
         `}>
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
