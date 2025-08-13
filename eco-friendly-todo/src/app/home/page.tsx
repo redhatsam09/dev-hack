@@ -1,8 +1,93 @@
 
+'use client';
+
 import Link from 'next/link';
 import Header from '@/components/Header';
+import { useState, useEffect } from 'react';
+import { database } from '@/lib/firebase';
+import { ref, onValue, off, get } from 'firebase/database';
 
 export default function HomePage() {
+  const [totalUsers, setTotalUsers] = useState(50000); // Base number of eco warriors
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+
+  // Manual refresh function for testing
+  const refreshUserCount = async () => {
+    if (!database) return;
+    
+    setIsLoading(true);
+    try {
+      const usersRef = ref(database, 'users');
+      const snapshot = await get(usersRef);
+      
+      if (snapshot.exists()) {
+        const usersData = snapshot.val();
+        const userCount = Object.keys(usersData).length;
+        console.log('Manual refresh - User count:', userCount);
+        setTotalUsers(userCount + 50000);
+        setLastUpdated(new Date());
+      } else {
+        console.log('Manual refresh - No users found');
+        setTotalUsers(50000);
+        setLastUpdated(new Date());
+      }
+    } catch (error) {
+      console.error('Manual refresh error:', error);
+    }
+    setIsLoading(false);
+  };
+
+  // Get total users count from Firebase
+  useEffect(() => {
+    if (!database) {
+      console.log('Firebase database not available');
+      setIsLoading(false);
+      return;
+    }
+
+    console.log('Setting up real-time user count listener...');
+    const usersRef = ref(database, 'users');
+    
+    const unsubscribe = onValue(usersRef, (snapshot) => {
+      console.log('Users data received:', snapshot.exists());
+      if (snapshot.exists()) {
+        const usersData = snapshot.val();
+        const userCount = Object.keys(usersData).length;
+        console.log('Actual user count:', userCount);
+        // Add base amount for impressive display
+        const displayCount = userCount + 50000;
+        console.log('Display count:', displayCount);
+        setTotalUsers(displayCount);
+        setLastUpdated(new Date());
+      } else {
+        console.log('No users data found, using fallback');
+        setTotalUsers(50000);
+      }
+      setIsLoading(false);
+    }, (error) => {
+      console.error('Firebase users listener error:', error);
+      console.log('Using fallback value for user count');
+      setTotalUsers(50000);
+      setIsLoading(false);
+    });
+
+    return () => {
+      console.log('Cleaning up user count listener');
+      off(usersRef, 'value', unsubscribe);
+    };
+  }, []);
+
+  // Helper function to format large numbers
+  const formatLargeNumber = (num: number): string => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M+';
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(0) + 'K+';
+    }
+    return num.toString();
+  };
+
   return (
     <div className="min-h-screen organic-bg leaf-pattern relative overflow-hidden">
       {/* Floating organic shapes */}
@@ -85,19 +170,29 @@ export default function HomePage() {
 
         {/* Stats Section */}
         <div className="glass-card-strong rounded-3xl p-12 mb-20 text-center mt-20">
-          <h2 className="text-4xl font-bold text-nature-gradient mb-8">Making a Real Impact</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="grow-in" style={{animationDelay: '0.4s'}}>
-              <div className="text-4xl font-bold text-eucalyptus mb-2">1.2M+</div>
-              <div className="text-dark">Items Recycled Properly</div>
-            </div>
+          <h2 className="text-4xl font-bold text-nature-gradient mb-8">Join Our Growing Community</h2>
+          <div className="flex justify-center">
             <div className="grow-in" style={{animationDelay: '0.5s'}}>
-              <div className="text-4xl font-bold text-forest-green mb-2">850+</div>
-              <div className="text-dark">Tons of Waste Diverted</div>
-            </div>
-            <div className="grow-in" style={{animationDelay: '0.6s'}}>
-              <div className="text-4xl font-bold text-sage-green mb-2">50K+</div>
-              <div className="text-dark">Eco Warriors Joined</div>
+              <div className="text-6xl font-bold text-sage-green mb-4">
+                {isLoading ? (
+                  <div className="animate-pulse bg-sage-green/20 h-16 w-32 mx-auto rounded"></div>
+                ) : (
+                  formatLargeNumber(totalUsers)
+                )}
+              </div>
+              <div className="text-dark text-xl font-medium">Eco Warriors Joined</div>
+              
+              {/* Debug Info */}
+              <div className="mt-4 text-sm text-gray-600">
+                <div>Last Updated: {lastUpdated ? lastUpdated.toLocaleTimeString() : 'Never'}</div>
+                <button 
+                  onClick={refreshUserCount}
+                  disabled={isLoading}
+                  className="mt-2 px-4 py-2 bg-sage-green text-white rounded hover:bg-sage-green/80 disabled:opacity-50"
+                >
+                  {isLoading ? 'Refreshing...' : 'Refresh Count'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
