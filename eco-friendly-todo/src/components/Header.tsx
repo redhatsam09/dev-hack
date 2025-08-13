@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
+import PointsDisplay from './PointsDisplay';
 import { auth } from '@/lib/firebase';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
@@ -26,24 +27,24 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow-lg border-b-4 border-[#b5d091]">
+    <header className="bg-white shadow-lg border-b-4 border-[#b4d093]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <img src="/logo.png" alt="Logo" className="h-12 w-12 mr-3" />
-          <Link href="/home" className="text-2xl font-bold text-gray-800 hover:text-[#b5d091] transition-colors">
+          <Link href="/home" className="text-2xl font-bold text-gray-800 hover:text-[#b4d093] transition-colors">
             Eco-Todo
           </Link>
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/home" className="text-gray-600 hover:text-[#b5d091] transition-colors font-medium">
+          <Link href="/home" className="text-gray-600 hover:text-[#b4d093] transition-colors font-medium">
             Home
           </Link>
-          <Link href="/about" className="text-gray-600 hover:text-[#b5d091] transition-colors font-medium">
+          <Link href="/about" className="text-gray-600 hover:text-[#b4d093] transition-colors font-medium">
             About
           </Link>
           {user && (
-            <Link href="/web-app" className="text-gray-600 hover:text-[#b5d091] transition-colors font-medium">
+            <Link href="/web-app" className="text-gray-600 hover:text-[#b4d093] transition-colors font-medium">
               My Tasks
             </Link>
           )}
@@ -53,13 +54,16 @@ export default function Header() {
           {loading ? (
             <div className="bg-gray-200 w-28 h-10 rounded-lg animate-pulse"></div>
           ) : user ? (
-            <div className="flex items-center">
+            <div className="flex items-center gap-4">
+              {/* Points Display */}
+              <PointsDisplay size="sm" />
+              
               <span className="hidden lg:inline text-gray-700 mr-3 font-medium">
                 Welcome, {user.displayName || user.email?.split('@')[0]}
               </span>
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                style={{ backgroundColor: '#b5d091' }}
+                style={{ backgroundColor: '#b4d093' }}
                 className="text-white font-bold py-2 px-4 rounded-lg hover:bg-opacity-90 transition-all duration-200 flex items-center shadow-md"
               >
                 <span className="mr-1">Account</span>
@@ -110,13 +114,13 @@ export default function Header() {
             <div className="flex items-center space-x-3">
               <Link 
                 href="/login" 
-                className="text-gray-600 hover:text-[#b5d091] transition-colors font-medium px-3 py-2"
+                className="text-gray-600 hover:text-[#b4d093] transition-colors font-medium px-3 py-2"
               >
                 Log In
               </Link>
               <Link
                 href="/signup"
-                style={{ backgroundColor: '#b5d091' }}
+                style={{ backgroundColor: '#b4d093' }}
                 className="text-white font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition-all duration-200 shadow-md"
               >
                 Get Started

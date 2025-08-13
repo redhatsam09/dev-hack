@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef, useState } from "react";
+import { usePoints } from "@/contexts/PointsContext";
+import { calculateQuizPoints } from "@/lib/gemini";
 
 interface Analysis {
   productName: string;
@@ -25,6 +27,10 @@ export default function VideoRecorder({}: VideoRecorderProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [showReport, setShowReport] = useState(false);
+  const [pointsEarned, setPointsEarned] = useState<number>(0);
+  const [isCalculatingPoints, setIsCalculatingPoints] = useState(false);
+  
+  const { addPoints, sessionPoints } = usePoints();
 
   const handleRecording = () => {
     if (isRecording) {
@@ -88,13 +94,62 @@ export default function VideoRecorder({}: VideoRecorderProps) {
     }
   };
 
-  const handleOptionSelect = (option: string) => {
+  const handleOptionSelect = async (option: string) => {
     setSelectedOption(option);
     setShowReport(true);
+    
+    // Check if answer is correct
+    if (analysis) {
+      const isCorrect = option === analysis.correctAnswers.best || option === analysis.correctAnswers.easy;
+      
+      if (isCorrect) {
+        setIsCalculatingPoints(true);
+        try {
+          // Calculate points using Gemini AI
+          const pointsToAward = await calculateQuizPoints(
+            analysis.productName,
+            option,
+            analysis.correctAnswers.best,
+            true
+          );
+          
+          setPointsEarned(pointsToAward);
+          
+          // Add points to user's total
+          await addPoints(pointsToAward, `Correctly recycled ${analysis.productName}`);
+          
+        } catch (error) {
+          console.error('Error calculating points:', error);
+          // Fallback points
+          const fallbackPoints = 25;
+          setPointsEarned(fallbackPoints);
+          await addPoints(fallbackPoints, `Correctly recycled ${analysis.productName}`);
+        } finally {
+          setIsCalculatingPoints(false);
+        }
+      } else {
+        setPointsEarned(0);
+      }
+    }
   };
 
   return (
     <div className="flex flex-col items-center w-full">
+      {/* Session Points Display */}
+      {sessionPoints > 0 && (
+        <div className="mb-6 p-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-xl shadow-lg animate-bounce-in">
+          <div className="flex items-center justify-center gap-2">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span className="font-bold text-lg">Session Points: {sessionPoints}</span>
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+        </div>
+      )}
+
       {!analysis && (
         <>
           <div className="w-full rounded-lg overflow-hidden shadow-lg mb-6 relative">
@@ -268,13 +323,32 @@ export default function VideoRecorder({}: VideoRecorderProps) {
           </div>
           
           {selectedOption && (selectedOption === analysis.correctAnswers.best || selectedOption === analysis.correctAnswers.easy) ? (
-            <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'var(--success)', color: 'white' }}>
+            <div className="p-4 rounded-lg mb-6 relative overflow-hidden" style={{ backgroundColor: 'var(--success)', color: 'white' }}>
+              {isCalculatingPoints && (
+                <div className="absolute inset-0 bg-white/20 flex items-center justify-center">
+                  <div className="flex items-center gap-2">
+                    <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    <span className="text-sm">Calculating points...</span>
+                  </div>
+                </div>
+              )}
               <div className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+                <div className="animate-celebration">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
                 <div>
-                  <p className="font-bold">Well done! +{analysis.pointsForCorrect} points</p>
+                  <p className="font-bold text-lg">
+                    Well done! 
+                    {pointsEarned > 0 && (
+                      <span className="animate-pulse-glow ml-2 px-2 py-1 bg-white/20 rounded-full">
+                        +{pointsEarned} points
+                      </span>
+                    )}
+                  </p>
                   <p className="text-sm opacity-90">You selected a correct recycling method</p>
                 </div>
               </div>

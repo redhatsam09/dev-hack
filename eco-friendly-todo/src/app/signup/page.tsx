@@ -119,7 +119,7 @@ export default function SignUpPage() {
             <button
               type="submit"
               disabled={loading}
-              style={{ backgroundColor: '#b5d091' }}
+              style={{ backgroundColor: '#b4d093' }}
               className="w-full text-white font-bold py-3 px-4 rounded-lg transition-colors text-lg shadow-md hover:bg-opacity-90"
             >
               {loading ? 'Creating Account...' : 'Create Account'}
@@ -130,7 +130,7 @@ export default function SignUpPage() {
         <div className="mt-6 pt-4 border-t border-gray-200">
           <p className="text-center text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" style={{ color: '#b5d091' }} className="font-medium hover:underline">
+            <Link href="/login" style={{ color: '#b4d093' }} className="font-medium hover:underline">
               Log In
             </Link>
           </p>

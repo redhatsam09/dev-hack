@@ -3,14 +3,19 @@
 import Image from 'next/image';
 import VideoRecorder from "@/components/VideoRecorder";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import PointsDisplay from "@/components/PointsDisplay";
+import { usePoints } from "@/contexts/PointsContext";
 import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const { resetSessionPoints } = usePoints();
   
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Reset session points when entering the app
+    resetSessionPoints();
+  }, [resetSessionPoints]);
 
   return (
     <ProtectedRoute>
@@ -27,10 +32,11 @@ export default function Home() {
             <Image src="/logo.png" alt="Eco-Todo Logo" width={50} height={50} className="mr-2" />
             <span className="text-white font-medium text-xl">Eco-Todo</span>
           </div>
-          <div>
-            <a href="#" className="text-white hover:text-[var(--accent)] transition-colors">
+          <div className="flex items-center gap-4">
+            <PointsDisplay size="sm" showSession={true} />
+            <a href="/profile" className="text-white hover:text-[var(--accent)] transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </a>
           </div>

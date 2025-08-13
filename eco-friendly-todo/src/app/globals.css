@@ -2,14 +2,14 @@
 
 :root {
   /* Main color scheme from Eco-Todo Logo */
-  --primary: #b5d091;       /* Exact green from logo (#b5d091) */
-  --primary-dark: #8aaa5b;  /* Darker shade for hover states */
-  --primary-darker: #6a8745; /* Even darker shade for depth */
+  --primary: #b4d093;       /* Exact green from logo (#b4d093) */
+  --primary-dark: #89aa5a;  /* Darker shade for hover states */
+  --primary-darker: #698744; /* Even darker shade for depth */
   --secondary: #3A8E8E;     /* Teal from logo */
   --secondary-dark: #2a6e6e; /* Darker teal for accents */
-  --accent: #d9e9c2;        /* Very light green accent */
-  --background: #b5d091;    /* Green for page background to match logo */
-  --content-background: #b5d091; /* Light green for content boxes */
+  --accent: #d8e9c1;        /* Very light green accent */
+  --background: #b4d093;    /* Green for page background to match logo */
+  --content-background: #b4d093; /* Light green for content boxes */
   
   /* Extended color palette */
   --neutral-light: #F2F7EF;  /* Almost white with green tint */
@@ -28,7 +28,7 @@
   
   /* Logo-specific colors */
   --logo-teal: #3A8E8E;      /* Teal from triangle in logo */
-  --logo-green: #b3d093;     /* Exact background green from logo */
+  --logo-green: #b4d093;     /* Exact background green from logo */
   
   /* Recycling report colors */
   --leaf-green: #81C784;     /* Green for "Best Way to Recycle" section */
@@ -63,6 +63,30 @@
   animation: fade-in 0.6s ease-out forwards;
 }
 
+.animate-bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-points-earned {
+  animation: points-earned 1.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}
+
+.animate-count-up {
+  animation: count-up 0.8s ease-out forwards;
+}
+
+.animate-celebration {
+  animation: celebration 1s ease-out forwards;
+}
+
 @keyframes leaf-sway {
   0%, 100% {
     transform: rotate(-2deg);
@@ -80,6 +104,89 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes points-earned {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes count-up {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    color: var(--success);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes celebration {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
   }
 }
 

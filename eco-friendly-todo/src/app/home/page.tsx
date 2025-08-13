@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#b5d091] to-[#a0bb7c]">
+    <div className="min-h-screen bg-gradient-to-b from-[#b4d093] to-[#9fba7b]">
       <Header />
       <main className="container mx-auto px-4 py-16 text-center">
         <div className="animate-fade-in">
