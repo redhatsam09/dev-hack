@@ -302,6 +302,11 @@ export default function ProfilePage() {
           </div>
         </main>
         
+        {/* Copyright Footer */}
+        <footer className="py-6 text-center text-text-light border-t border-sage-green/20 bg-mint-cream/30 relative z-10">
+          <p className="text-sm">© 2025 Sayandeep Dutta</p>
+        </footer>
+        
         {/* Additional floating shapes */}
         <div className="absolute bottom-10 right-10 w-20 h-20 organic-shape bg-gradient-to-br from-sage-green/10 to-forest-green/15 floating"></div>
         <div className="absolute bottom-20 left-20 w-16 h-16 organic-shape bg-gradient-to-br from-eucalyptus/20 to-mint-cream/25 floating-delayed"></div>

@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "users": {
+      ".read": true,
+      ".write": "auth != null",
+      "$uid": {
+        ".write": "$uid === auth.uid",
+        "points": {
+          ".validate": "newData.isNumber()"
+        },
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        "displayName": {
+          ".validate": "newData.isString()"
+        },
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        "pointsHistory": {
+          ".write": "$uid === auth.uid"
+        }
+      }
+    }
+  }
+}
