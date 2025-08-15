@@ -23,29 +23,6 @@
 
 ---
 
-## Project Workflow
-
-```mermaid
-graph TD
-    A[User Opens App] --> B{Authenticated?}
-    B -->|No| C[Login/Signup]
-    B -->|Yes| D[Dashboard]
-    C --> D
-    D --> E[Record Video]
-    E --> F[AI Analysis]
-    F --> G[Quiz Question]
-    G --> H{Correct Answer?}
-    H -->|Yes| I[Earn Points]
-    H -->|No| J[Show Answer]
-    I --> K[Update Leaderboard]
-    J --> K
-    K --> L{Scan Another?}
-    L -->|Yes| E
-    L -->|No| M[End]
-```
-
----
-
 ## Setup and Installation
 
 ### Environment Variables Setup
@@ -145,12 +122,24 @@ The application uses several internal API routes for seamless functionality:
 
 ## How It Works
 
-1. **Record:** Use your device camera to record a short video of any recyclable item
-2. **Analyze:** Our AI powered by Google Gemini analyzes the item and identifies the material
-3. **Quiz:** Answer recycling method questions to test and improve your knowledge
-4. **Learn:** Get detailed instructions on the best and easiest recycling methods
-5. **Earn:** Gain points for correct answers and sustainable choices
-6. **Compete:** Climb the global leaderboard and inspire others!
+```mermaid
+graph TD
+    A[User Opens App] --> B{Authenticated?}
+    B -->|No| C[Login/Signup]
+    B -->|Yes| D[Dashboard]
+    C --> D
+    D --> E[Record Video]
+    E --> F[AI Analysis]
+    F --> G[Quiz Question]
+    G --> H{Correct Answer?}
+    H -->|Yes| I[Earn Points]
+    H -->|No| J[Show Answer]
+    I --> K[Update Leaderboard]
+    J --> K
+    K --> L{Scan Another?}
+    L -->|Yes| E
+    L -->|No| M[End]
+```
 
 ---
 
