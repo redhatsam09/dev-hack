@@ -27,42 +27,21 @@
 
 ```mermaid
 graph TD
-    A[User Opens App] --> B{User Authenticated?}
-    B -->|No| C[Login/Signup Page]
-    B -->|Yes| D[Main Dashboard]
-    
-    C --> E[Firebase Authentication]
-    E --> D
-    
-    D --> F[Camera Interface]
-    F --> G[Record Video of Item]
-    G --> H[Stop Recording]
-    
-    H --> I[Send Video to API]
-    I --> J[Google Gemini AI Analysis]
-    J --> K[Item Identification]
-    
-    K --> L[Generate Quiz Question]
-    L --> M[Display Multiple Choice]
-    M --> N[User Selects Answer]
-    
-    N --> O{Answer Correct?}
-    O -->|Yes| P[Calculate Points]
-    O -->|No| Q[Show Correct Answer]
-    
-    P --> R[Update Firebase Points]
-    Q --> S[Display Instructions]
-    R --> S
-    
-    S --> T[Show Report]
-    T --> U[Update Leaderboard]
-    U --> V[Display Statistics]
-    
-    V --> W{Scan Another?}
-    W -->|Yes| F
-    W -->|No| X[View Profile]
-    
-    X --> Y[End Session]
+    A[User Opens App] --> B{Authenticated?}
+    B -->|No| C[Login/Signup]
+    B -->|Yes| D[Dashboard]
+    C --> D
+    D --> E[Record Video]
+    E --> F[AI Analysis]
+    F --> G[Quiz Question]
+    G --> H{Correct Answer?}
+    H -->|Yes| I[Earn Points]
+    H -->|No| J[Show Answer]
+    I --> K[Update Leaderboard]
+    J --> K
+    K --> L{Scan Another?}
+    L -->|Yes| E
+    L -->|No| M[End]
 ```
 
 ---
