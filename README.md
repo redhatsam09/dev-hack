@@ -154,4 +154,4 @@ The application uses several internal API routes for seamless functionality:
 
 ---
 
-**For a sustainable future**
+**For a sustainable future 🌱**
