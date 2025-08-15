@@ -55,7 +55,7 @@ This project is built with cutting-edge technologies for optimal performance and
 ### Prerequisites
 
 * **Node.js** (v18 or higher)
-* **npm** or **yarn**
+* **npm**
 * **Firebase Account** for authentication and database
 * **Google AI Studio Account** for Gemini API access
 
@@ -116,8 +116,6 @@ NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
 3. **Install dependencies:**
    ```bash
    npm install
-   # or
-   yarn install
    ```
 
 4. **Set up environment variables:**
@@ -129,8 +127,6 @@ NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
 5. **Start the development server:**
    ```bash
    npm run dev
-   # or
-   yarn dev
    ```
 
 6. **Open your browser:**
@@ -155,56 +151,7 @@ The application uses several internal API routes for seamless functionality:
 * **`/web-app`** - Main application interface with video recording and analysis
 * **`/leaderboard`** - Global rankings and user statistics
 * **`/profile`** - Personal user dashboard and settings
-* **`/about`** - Information about the project and sustainability mission
 
 ---
 
-## Design Features
-
-* **Organic Design:** Nature-inspired UI with flowing animations and organic shapes
-* **Eco-Color Palette:** Carefully chosen colors reflecting sustainability and nature
-* **Mobile-First:** Responsive design optimized for all screen sizes
-* **Smooth Animations:** Engaging micro-interactions and smooth transitions
-* **Accessibility:** Built with accessibility best practices in mind
-
----
-
-## Contributing
-
-We welcome contributions from eco-conscious developers! Please feel free to:
-
-1. **Fork the repository**
-2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit your changes** (`git commit -m 'Add some amazing feature'`)
-4. **Push to the branch** (`git push origin feature/amazing-feature`)
-5. **Open a Pull Request**
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgments
-
-* **Google Gemini AI** for powerful video analysis capabilities
-* **Firebase** for robust authentication and real-time database services
-* **Next.js Team** for the incredible React framework
-* **Tailwind CSS** for the utility-first CSS framework
-* **All eco-warriors** using this app to make the world more sustainable!
-
----
-
-## Support
-
-If you encounter any issues or have questions:
-
-1. **Check the [Issues](../../issues)** section for existing solutions
-2. **Create a new issue** if you find a bug or have a feature request
-3. **Join our community** discussions for tips and best practices
-
----
-
-**Made with love for a sustainable future**
+**For a sustainable future**
