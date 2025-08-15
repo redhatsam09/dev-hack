@@ -4,60 +4,26 @@
 
 ---
 
-## Features
-
-* **AI-Powered Video Analysis:** Record or scan recyclable items using your device's camera for instant AI-powered analysis!
-* **Smart Recycling Guidance:** Get personalized, detailed instructions on the best and easiest ways to recycle any item!
-* **Gamified Learning:** Earn points for correct recycling choices and climb the global leaderboard!
-* **Real-Time Stats:** Track your environmental impact with live statistics and progress monitoring!
-* **Secure Authentication:** Firebase-powered user registration and login with secure session management!
-* **User Profiles:** View your accumulated eco-score, achievements, and personal recycling history!
-* **Global Leaderboard:** Compete with eco-conscious users worldwide and celebrate sustainability champions!
-* **Responsive Design:** Beautiful, mobile-first design that works seamlessly across all devices!
-
----
-
 ## Tech Stack
-
-This project is built with cutting-edge technologies for optimal performance and user experience!
 
 ### Frontend
 * **Framework:** Next.js 15 with React 19
-* **Styling:** Tailwind CSS 4 with custom eco-friendly design system
-* **TypeScript:** Full type safety and enhanced developer experience
-* **Responsive Design:** Mobile-first approach with organic, nature-inspired UI
+* **Styling:** Tailwind CSS 4
+* **Language:** TypeScript
 
 ### Backend & Services
-* **Authentication & Database:** Firebase (Realtime Database + Auth)
-* **AI Analysis:** Google Gemini 1.5 Flash for intelligent video analysis
-* **Deployment:** Optimized for modern web platforms with Turbopack
+* **Authentication & Database:** Firebase
+* **AI Analysis:** Google Gemini 1.5 Flash
+* **Build Tool:** Turbopack
 
 ### Key Libraries
-* **@google/generative-ai:** Google's Gemini AI integration
-* **firebase:** Complete Firebase SDK for authentication and real-time data
-* **next:** React framework with server-side rendering and optimization
-
----
-
-## How It Works
-
-1. **Record:** Use your device camera to record a short video of any recyclable item
-2. **Analyze:** Our AI powered by Google Gemini analyzes the item and identifies the material
-3. **Quiz:** Answer recycling method questions to test and improve your knowledge
-4. **Learn:** Get detailed instructions on the best and easiest recycling methods
-5. **Earn:** Gain points for correct answers and sustainable choices
-6. **Compete:** Climb the global leaderboard and inspire others!
+* **@google/generative-ai:** Gemini AI
+* **firebase:** Authentication and real-time database
+* **next:** React framework with SSR
 
 ---
 
 ## Setup and Installation
-
-### Prerequisites
-
-* **Node.js** (v18 or higher)
-* **npm**
-* **Firebase Account** for authentication and database
-* **Google AI Studio Account** for Gemini API access
 
 ### Environment Variables Setup
 
@@ -151,6 +117,17 @@ The application uses several internal API routes for seamless functionality:
 * **`/web-app`** - Main application interface with video recording and analysis
 * **`/leaderboard`** - Global rankings and user statistics
 * **`/profile`** - Personal user dashboard and settings
+
+---
+
+## How It Works
+
+1. **Record:** Use your device camera to record a short video of any recyclable item
+2. **Analyze:** Our AI powered by Google Gemini analyzes the item and identifies the material
+3. **Quiz:** Answer recycling method questions to test and improve your knowledge
+4. **Learn:** Get detailed instructions on the best and easiest recycling methods
+5. **Earn:** Gain points for correct answers and sustainable choices
+6. **Compete:** Climb the global leaderboard and inspire others!
 
 ---
 
