@@ -57,6 +57,35 @@ NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
 4. **Setup Realtime Database:**
    - Go to Realtime Database → Create database
    - Choose your security rules (start in test mode for development)
+   - Configure the following database rules:
+   ```json
+   {
+     "rules": {
+       "users": {
+         ".read": true,
+         ".write": "auth != null",
+         "$uid": {
+           ".write": "$uid === auth.uid",
+           "points": {
+             ".validate": "newData.isNumber()"
+           },
+           "email": {
+             ".validate": "newData.isString()"
+           },
+           "displayName": {
+             ".validate": "newData.isString()"
+           },
+           "createdAt": {
+             ".validate": "newData.isString()"
+           },
+           "pointsHistory": {
+             ".write": "$uid === auth.uid"
+           }
+         }
+       }
+     }
+   }
+   ```
 5. **Get your config:**
    - Go to Project Settings → General → Your apps
    - Add a web app and copy the Firebase configuration
