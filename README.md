@@ -100,15 +100,6 @@ NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
 
 ---
 
-## API Endpoints
-
-The application uses several internal API routes for seamless functionality:
-
-* **`POST /api/analyze-video`** - Analyzes uploaded video content using Google Gemini AI
-* **`POST /api/scan`** - Alternative scanning endpoint for image-based analysis
-
----
-
 ## Application Pages
 
 * **`/`** - Landing page with app introduction and features
