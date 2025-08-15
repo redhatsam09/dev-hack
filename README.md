@@ -1,6 +1,6 @@
-# Eco-Todo
+# Eco-Todo 🌱
 
-**Eco-Todo** is an innovative web application that revolutionizes recycling education through AI-powered video analysis! Simply record or scan a recyclable item, and our intelligent system will provide detailed recycling instructions, eco-scores, and actionable sustainability tips. Join a global community of eco-warriors and compete on our leaderboard while making a positive environmental impact!
+**Eco-Todo** is an innovative web application that uses AI to scan and recycle products. Eco-Todo acts as a todo list app scanning products and creating custom quizzes based on the product details. Every correct answer earns you points to climb up the leaderboard and the habit of making a sustainable environment.   
 
 ---
 
@@ -134,4 +134,4 @@ graph TD
 
 ---
 
-**For a sustainable future 🌱**
+**For a sustainable future ♻️**
