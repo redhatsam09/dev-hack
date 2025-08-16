@@ -6,6 +6,10 @@
 
 ## YouTube
 
+<img width="1898" height="1079" alt="Screenshot 2025-08-15 202823" src="https://github.com/user-attachments/assets/6ffed328-aaec-4af9-ba5a-ff5d8d22988c" />
+
+### [Click Here for the video](https://youtu.be/2YIzqUOVuXA)
+
 ---
 
 ## Tech Stack
